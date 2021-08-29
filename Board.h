@@ -1,18 +1,21 @@
 #pragma once
+#include <SFML/Graphics.hpp>
+#include <vector>
+#include "Piece.h"
 
 class Board {
 private:
 	int nRows;
 	int nColumns;
-	int fileSize;
+	int tileSize;
 public:
-	Board();
+	Board(int nRows, int nColumns, int tileSize);
 
-	void printBoard(const RenderWindow& window);
+	void printBoard(sf::RenderWindow& window, sf::Color darkTileColor, sf::Color lightTileColor);
 
 	//todo: change to a vector of pieces when definition is done
 	//Maybe print pieces in a PieceManager instead of the actual board
-	void printPieces(const RenderWindow& window, std::vector<int>& pieces);
+	void printPieces(sf::RenderWindow& window, std::vector<Piece&>& pieces);
 
 
 	//--- GETTERS AND SETTERS
@@ -22,7 +25,7 @@ public:
 	int getNColumns();
 	void setNColumns(int nColumns);
 
-	int getFileSize();
-	void setFileSize(int fileSize);
+	int getTileSize();
+	void setTileSize(int newTileSize);
 
 };

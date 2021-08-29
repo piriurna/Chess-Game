@@ -149,10 +149,11 @@
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Piece.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
-    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Piece.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
