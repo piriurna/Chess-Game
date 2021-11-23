@@ -3,14 +3,14 @@
 #include "Piece.h"
 #include <SFML/Graphics.hpp>
 class Player {
-	Player();
+public:
+	Player(Team team);
+
+	std::vector<Piece*> getPieces(std::vector<Piece*> gamePieces) const;
+
+	Team getTeam();
 
 private:
-	std::vector<Piece> pieces;
-	sf::Color color;
-public:
-	std::vector<Piece> getPieces() const;
-	void setPieces(std::vector<Piece> pieces);
-	void removePiece(Piece& piece);
-	void addPiece(Piece& piece);
+	Team team;
+
 };

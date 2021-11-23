@@ -1,6 +1,6 @@
-#include "TextureManager.h"
+#include "TextureManager.h";
 
-void PieceManager::initialize(){
+void TextureManager::initialize() {
 	whitePawnTexture.loadFromFile("graphics/WhitePawn.png");
 	whiteBishopTexture.loadFromFile("graphics/WhiteBishop.png");
 	whiteKnightTexture.loadFromFile("graphics/WhiteKnight.png");
@@ -8,24 +8,35 @@ void PieceManager::initialize(){
 	whiteQueenTexture.loadFromFile("graphics/WhiteQueen.png");
 	whiteKingTexture.loadFromFile("graphics/WhiteKing.png");
 
-	imageList[PieceType::PAWN][PieceColor::WHITE_PIECE_ID] = sf::Sprite(whitePawnTexture);
-	imageList[PieceType::BISHOP][PieceColor::WHITE_PIECE_ID] = sf::Sprite(whiteBishopTexture);
-	imageList[PieceType::KNIGHT][PieceColor::WHITE_PIECE_ID] = sf::Sprite(whiteKnightTexture);
-	imageList[PieceType::ROOK][PieceColor::WHITE_PIECE_ID] = sf::Sprite(whiteRookTexture);
-	imageList[PieceType::QUEEN][PieceColor::WHITE_PIECE_ID] = sf::Sprite(whiteQueenTexture);
-	imageList[PieceType::KING][PieceColor::WHITE_PIECE_ID] = sf::Sprite(whiteKingTexture);
+	blackPawnTexture.loadFromFile("graphics/BlackPawn.png");
+	blackBishopTexture.loadFromFile("graphics/BlackBishop.png");
+	blackKnightTexture.loadFromFile("graphics/BlackKnight.png");
+	blackRookTexture.loadFromFile("graphics/BlackRook.png");
+	blackQueenTexture.loadFromFile("graphics/BlackQueen.png");
+	blackKingTexture.loadFromFile("graphics/BlackKing.png");
 
-	imageList[PieceType::PAWN][PieceColor::BLACK_PIECE_ID] = sf::Sprite(whitePawnTexture);
-	imageList[PieceType::BISHOP][PieceColor::BLACK_PIECE_ID] = sf::Sprite(whiteBishopTexture);
-	imageList[PieceType::KNIGHT][PieceColor::BLACK_PIECE_ID] = sf::Sprite(whiteKnightTexture);
-	imageList[PieceType::ROOK][PieceColor::BLACK_PIECE_ID] = sf::Sprite(whiteRookTexture);
-	imageList[PieceType::QUEEN][PieceColor::BLACK_PIECE_ID] = sf::Sprite(whiteQueenTexture);
-	imageList[PieceType::KING][PieceColor::BLACK_PIECE_ID] = sf::Sprite(whiteKingTexture);
-}
+	imageList[int(Piece::Type::PAWN)][int(Team::WHITE)] = &whitePawnTexture;
+	imageList[int(Piece::Type::BISHOP)][int(Team::WHITE)] = &whiteBishopTexture;
+	imageList[int(Piece::Type::KNIGHT)][int(Team::WHITE)] = &whiteKnightTexture;
+	imageList[int(Piece::Type::ROOK)][int(Team::WHITE)] = &whiteRookTexture;
+	imageList[int(Piece::Type::QUEEN)][int(Team::WHITE)] = &whiteQueenTexture;
+	imageList[int(Piece::Type::KING)][int(Team::WHITE)] = &whiteKingTexture;
 
-const sf::Sprite& PieceManager::getChessPieceImage(PieceType type, PieceColor color)
-{
-	return imageList[type][color];
+	imageList[int(Piece::Type::PAWN)][int(Team::BLACK)] = &blackPawnTexture;
+	imageList[int(Piece::Type::BISHOP)][int(Team::BLACK)] = &blackBishopTexture;
+	imageList[int(Piece::Type::KNIGHT)][int(Team::BLACK)] = &blackKnightTexture;
+	imageList[int(Piece::Type::ROOK)][int(Team::BLACK)] = &blackRookTexture;
+	imageList[int(Piece::Type::QUEEN)][int(Team::BLACK)] = &blackQueenTexture;
+	imageList[int(Piece::Type::KING)][int(Team::BLACK)] = &blackKingTexture;
+};
+
+const sf::Texture* TextureManager::getChessPieceTexture(Piece::Type type, Team color) {
+	return imageList[int(type)][int(color)];
+};
+
+
+TextureManager::TextureManager() {
+	initialize();
 }
 
 

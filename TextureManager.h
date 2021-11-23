@@ -1,8 +1,12 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>;
+#include "Piece.h";
 
-class PieceManager {
+class TextureManager {
 
+
+
+private:
 	sf::Texture whitePawnTexture;
 	sf::Texture whiteBishopTexture;
 	sf::Texture whiteKnightTexture;
@@ -10,20 +14,26 @@ class PieceManager {
 	sf::Texture whiteQueenTexture;
 	sf::Texture whiteKingTexture;
 
+	sf::Texture blackPawnTexture;
+	sf::Texture blackBishopTexture;
+	sf::Texture blackKnightTexture;
+	sf::Texture blackRookTexture;
+	sf::Texture blackQueenTexture;
+	sf::Texture blackKingTexture;
+
+
 
 	void initialize();
-
-private:
     enum : int { NUM_OF_PIECES = 6 };
     enum : int { NUM_OF_COLORS = 2 };
-    typedef sf::Sprite ChessPieceList[NUM_OF_PIECES][NUM_OF_COLORS];
+    typedef sf::Texture* ChessPieceList[NUM_OF_PIECES][NUM_OF_COLORS];
     //holds the chess piece images
 
-    static ChessPieceList imageList;
-public:
-	enum PieceType : int { PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING };
-	enum PieceDirection : int { UP = 1, DOWN = -1 };
-	enum PieceColor : int { WHITE_PIECE_ID, BLACK_PIECE_ID };
+    ChessPieceList imageList;
 
-    static const sf::Sprite& getChessPieceImage(PieceType type, PieceColor color);
+public:
+	TextureManager();
+	enum PieceDirection : int { UP = 1, DOWN = -1 };
+
+    const sf::Texture* getChessPieceTexture(Piece::Type type, Team color);
 };

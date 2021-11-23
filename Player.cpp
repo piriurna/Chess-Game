@@ -1,32 +1,22 @@
 #include "Player.h"
 
-Player::Player() {
-
+Player::Player(Team team) {
+	this->team = team;
 }
 
-std::vector<Piece> Player::getPieces() const
+std::vector<Piece*> Player::getPieces(std::vector<Piece*> gamePieces) const
 {
-	return pieces;
-}
-
-void Player::setPieces(std::vector<Piece> pieces)
-{
-	this->pieces.clear();
-	this->pieces = pieces;
-}
-
-void Player::removePiece(Piece& piece)
-{
-	std::vector<Piece> newVector;
-	for (int i = 0; i < pieces.size(); i++) {
-		if (pieces.at(i).equals(piece)) continue;
-		newVector.push_back(pieces.at(i));
+	std::vector<Piece*> myPieces;
+	for (int i = 0; i < gamePieces.size(); i++) {
+		if ((*gamePieces.at(i)).getTeam() == this->team) {
+			myPieces.push_back(gamePieces.at(i));
+		}
 	}
-	setPieces(newVector);
+
+	return myPieces;
 }
 
-void Player::addPiece(Piece& piece)
-{
-	pieces.push_back(piece);
+Team Player::getTeam() {
+	return this->team;
 }
 
